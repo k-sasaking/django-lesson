@@ -7,5 +7,18 @@
 <body>
 <H1>Hello, Djano!!</H1>
 <p>This is hello.html template</p>
+<p>{{ test_param }}</p>
+<hr/>
+{% for human in test_humans %}
+{% if human.age >= 20 %}
+<ul>
+    <li>NAME: {{ human.name }}</li>
+    <li>AGE: {{ human.age }}</li>
+    <li>COUNTRY: {{ human.country|upper }}</li>
+</ul>
+<hr/>
+{% elif human.age == 20 %}
+{% endif %}
+{% endfor %}
 </body>
 </html>
