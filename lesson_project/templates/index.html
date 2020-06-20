@@ -22,5 +22,34 @@ Home
     </li>
   </ul>
   {% endfor %}
+  {% if object_list %}
+    <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {% if object_list.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1&query={{ request.GET.query }}" tabindex="-1">First</a>
+      </li>
+      <li class="page-item">
+          <a class="page-link" href="?page={{ object_list.previous_page_number }}&query={{ request.GET.query }}">Previous</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><a class="page-link">First</a></li>
+      <li class="page-item disabled"><a class="page-link">Previous</a></li>
+      {% endif %}
+      <li class="page-item disabled"><a class="page-link">{{ object_list.number }}</a></li>
+      {% if object_list.has_next %}
+      <li class="page-item">
+          <a class="page-link" href="?page={{ object_list.next_page_number }}&query={{ request.GET.query }}">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ object_list.paginator.num_pages }}&query={{ request.GET.query }}">Last</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><a class="page-link">Next</a></li>
+      <li class="page-item disabled"><a class="page-link">Last</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
 </article>
 {% endblock %}
