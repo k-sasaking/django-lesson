@@ -24,6 +24,6 @@ urlpatterns = [
     path('hello/', include('hello.urls')),
     path('practice/', include('practice.urls')),
     path('post/', include('post.urls')),
-    path('', views.index, name='index'),
-    path('<str:message_type>/', views.message, name='message'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('<str:message_type>/', views.MessageView.as_view(), name='message'),
 ]
