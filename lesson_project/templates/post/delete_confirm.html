@@ -1,0 +1,39 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Post Dlete Confirm
+{% endblock %}
+
+{% block page_title %}
+削除確認画面
+{% endblock %}
+
+{% block contents %}
+<article>
+    <form method="post">
+    {% csrf_token %}
+      <div class="form-group">
+        <label for="postId">ID</label>
+        <span class="form-control" id="postId">{{ object.id }}</span>
+      </div>
+      <div class="form-group">
+        <label for="postName">投稿者名</label>
+        <span class="form-control" id="postName">{{ object.post_name }}</span>
+      </div>
+      <div class="form-group">
+        <label for="postText">投稿内容</label>
+        <span class="form-control" id="postText">{{ object.text }}</span>
+      </div>
+      <div class="form-group">
+        <label for="postDate">投稿時間</label>
+        <span class="form-control" id="postDate">{{ object.post_date }}</span>
+      </div>
+      <div class="form-group">
+        <label for="isPublished">公開フラグ</label>
+        <span class="form-control" id="isPublished">{{ object.is_publish }}</span>
+      </div>
+      <button type="button" class="btn btn-default" onclick="history.back()">Back</button>
+      <button type="submit" class="btn btn-danger">Confirm</button>
+    </form>
+</article>
+{% endblock %}

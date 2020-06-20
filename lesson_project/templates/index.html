@@ -10,7 +10,17 @@ Home
 
 {% block contents %}
 <article>
-  <h1>Index.htmlの表示</h1>
-  <p>テンプレートの継承をしています。</p>
+  {% for object in object_list %}
+  <ul class="list-group" style="border:1px solid;">
+      <li class="list-group-item">投稿名: {{ object.post_name }}</li>
+      <li class="list-group-item">投稿日: {{ object.post_date }}</li>
+      <li class="list-group-item">投稿内容: {{ object.text }}</li>
+      <li class="list-group-item">
+        <button type="button" class="btn publish-btn btn-primary">Publish</button>
+        <a href="/post/update/{{ object.id }}"><button type="button" class="btn btn-success">Edit</button></a>
+        <a href="/post/delete/{{ object.id }}"><button type="button" class="btn btn-danger">Delete</button></a>
+    </li>
+  </ul>
+  {% endfor %}
 </article>
 {% endblock %}
