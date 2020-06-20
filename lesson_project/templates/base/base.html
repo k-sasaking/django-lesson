@@ -57,6 +57,20 @@
         </nav>
    </header>
 
+   {% if message %}
+   {% if message_type == 'error' %}
+   <div class="alert alert-danger" role="alert" style="margin-bottom:0px">{{ message }}</div>
+   {% elif message_type == 'warning' %}
+   <div class="alert alert-warning" role="alert" style="margin-bottom:0px">{{ message }}</div>
+   {% elif message_type == 'primary' %}
+   <div class="alert alert-primary" role="alert" style="margin-bottom:0px">{{ message }}</div>
+   {% elif message_type == 'success' %}
+   <div class="alert alert-success" role="alert" style="margin-bottom:0px">{{ message }}</div>
+   {% else %}
+   <div class="alert alert-info" role="alert" style="margin-bottom:0px">{{ message }}</div>
+   {% endif %}
+   {% endif %}
+
    {% block contents %}{% endblock %}
 
    <footer class="footer">

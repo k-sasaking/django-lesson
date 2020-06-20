@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
+from . import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', include('hello.urls')),
     path('practice/', include('practice.urls')),
     path('post/', include('post.urls')),
+    path('', views.index, name='index'),
+    path('<str:message_type>/', views.message, name='message'),
 ]
